@@ -1,10 +1,10 @@
-def main(input):
-    if input is None:
+def main(inp):
+    if inp is None:
         with open("2/input.txt", "r") as file:
             file = file.read().split(",")
             file = [int(i) for i in file]
     else:
-        file = input
+        file = inp
     for x in range(0, len(file), 4):
         if file[x] == 1:
             file[file[x+3]] = file[file[x+1]] + file[file[x+2]]
