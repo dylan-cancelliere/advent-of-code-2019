@@ -1,5 +1,6 @@
-def main():
-    with open("/home/dylan/cs/adventofcode/5/input.txt", "r") as file:
+def main(fname, phase_setting, input_signal):
+    usr = phase_setting
+    with open(fname, "r") as file:
         file = file.read().split(",")
         file = [int(i) for i in file]
     i = 0
@@ -12,11 +13,11 @@ def main():
                 op12(file, i, (0, 0, 0), addition)
                 i += 4
             elif file[i] == 3:
-                file[file[i + 1]] = 5  # int(input("Enter number: "))
+                file[file[i + 1]] = usr
+                usr = input_signal
                 i += 2
             elif file[i] == 4:
-                print(file[file[i + 1]])
-                i += 2
+                return file[file[i + 1]]
             elif file[i] == 5:
                 i += op5(file, i, (0, 0))
             elif file[i] == 6:
@@ -36,10 +37,9 @@ def main():
             elif opcode == 4:
                 cmd = int(str(file[i])[:-2])
                 if cmd == 0:
-                    print(file[file[i + 1]])
+                    return file[file[i + 1]]
                 else:
-                    print(file[i + 1])
-                i += 2
+                    return file[i + 1]
             elif opcode == 5:
                 cmd = str(file[i])[:-2]
                 pm = get_pm(cmd)
@@ -193,4 +193,4 @@ def tester():
 
 
 if __name__ == "__main__":
-    main()
+    main("/home/dylan/cs/adventofcode/5/input.txt", 5, 5)
