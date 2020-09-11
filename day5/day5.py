@@ -17,7 +17,8 @@ def main(fname, phase_setting, input_signal):
                 usr = input_signal
                 i += 2
             elif file[i] == 4:
-                return file[file[i + 1]]
+                four = file[file[i + 1]]
+                i += 2
             elif file[i] == 5:
                 i += op5(file, i, (0, 0))
             elif file[i] == 6:
@@ -33,13 +34,15 @@ def main(fname, phase_setting, input_signal):
             pm = []
             addition = True
             if opcode == 99:
-                return "Break"
+                return four
             elif opcode == 4:
                 cmd = int(str(file[i])[:-2])
                 if cmd == 0:
-                    return file[file[i + 1]]
+                    four = file[file[i + 1]]
+                    i += 2
                 else:
-                    return file[i + 1]
+                    four = file[i + 1]
+                    i += 2
             elif opcode == 5:
                 cmd = str(file[i])[:-2]
                 pm = get_pm(cmd)

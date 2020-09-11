@@ -6,7 +6,7 @@ def main():
     zeros = (9999999, None)
     layer = ""
     while len(string) > width * height:
-        num = 0
+        num =
         layer = string[:width * height]
         string = string[width * height:]
         for i in layer:
@@ -29,7 +29,7 @@ def decode():
         counter = 0
         for i in layer:
             if counter == width:
-                
+
 
 
 def count(val, string):
